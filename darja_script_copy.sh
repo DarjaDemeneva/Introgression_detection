@@ -10,7 +10,7 @@ ancestral=`echo ancestral/homo_sapiens_ancestor_{1..22}.fa | sed 's/ /,/g'`
 hmmix create_ingroup -ind="HG00101" -vcf=$bcf_files -weights=strictmask.bed -out=obs -outgroup=outgroup.txt -ancestral=$ancestral
 
 # "ingroup": ["HG00096", "HG00097", "HG00099", "HG00100"] + "HG02922" (in outgroup) + "NA19017" (LWK, not in outgroup) + "NA19625" (ASW, not in outgroup)
-# + ["HG00101", "HG00403", "HG00404", "HG00406", "HG00407", "HG00409"]
+# + "HG00101"
 
 hmmix train -obs=obs.HG00101.txt -weights=strictmask.bed -mutrates=mutrate.bed -out=trained.HG00101.phased.json -haploid
 
