@@ -11,6 +11,6 @@ reference=`echo reference37/chr{1..22}.fa | sed 's/ /,/g'`
 
 # hmmix create_ingroup -ind=individuals.json -vcf=$bcf_files -weights=strictmask.bed -out=obs -outgroup=outgroup.txt -ancestral=$ancestral
 
-hmmix train -obs=obs.HG00112.txt -weights=strictmask.bed -mutrates=mutrate.bed -out=trained.HG00112.phased.json -haploid
+# hmmix train -obs=obs.HG00452.txt -weights=strictmask.bed -mutrates=mutrate.bed -out=trained.HG00452.phased.json -haploid
 
-hmmix decode -obs=obs.HG00112.txt -weights=strictmask.bed -mutrates=mutrate.bed -param=trained.HG00112.phased.json -out=HG00112.decoded -haploid 
+hmmix decode -obs=obs.HG00452.txt -weights=strictmask.bed -mutrates=mutrate.bed -param=trained.HG00452.phased.json -out=HG00452.decoded -haploid 
