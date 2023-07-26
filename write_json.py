@@ -14,8 +14,8 @@ individuals = {
     "outgroup" : []
 }
 
-ingroup_pop = ["HG00096", "HG00097", "HG00099", "HG00100", "HG02944"] # population selected as outgroup
-outgroup_pop = ["YRI", "MSL", "ESN"] 
+ingroup_pop = ["GBR", "CHS"] 
+outgroup_pop = ["YRI"] 
 
 # Add outgroup individuals.
 for row in array:
@@ -23,12 +23,14 @@ for row in array:
     if row[1] in outgroup_pop: # and len(individuals['outgroup']) < len_outgroup
         individuals['outgroup'].append(row[0])
 
+
 for row in array:
     #len_ingroup = 200
-    if row[0] in ingroup_pop and row[0] not in individuals['outgroup']: 
+    if row[1] in ingroup_pop and row[0] not in individuals['outgroup']: 
         individuals['ingroup'].append(row[0])
 
 # Creating a json file and adding the individuals dictionary to it.
 # Will overwrite existing file
 individuals_file = open('individuals.json', 'w')
 individuals_file.write(json.dumps(individuals))
+print("Amount of ingroup individuals: ", len(individuals['ingroup']), "\nAmount of outgroup individuals", len(individuals['outgroup']))
