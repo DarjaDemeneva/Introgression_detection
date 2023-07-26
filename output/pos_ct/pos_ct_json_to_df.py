@@ -7,6 +7,11 @@ import glob
 
 # Extracting IDs from each population  
 
+with open("GBR_list.txt", "r") as GBR:
+    individuals_GBR = GBR.read()
+GBR_list = [i.strip() for i in individuals_GBR.split(",")]
+GBR_list = [i.strip('"') for i in GBR_list]
+
 with open("CHS_list.txt", "r") as CHS:
     individuals_CHS = CHS.read()
 CHS_list = [i.strip() for i in individuals_CHS.split(",")]
@@ -38,9 +43,10 @@ temp["ind_ID"] = id_list
 
 # Defining a funciton to check if the ind_ID is in GBR_list
 def get_population(id):
-    if id in CHS_list:
+    if id in GBR_list:
+        return "GBR"
+    elif id in CHS_list:
         return "CHS"
-
 
 # Adding a column with population based on ind_ID
 temp["pop"] = temp["ind_ID"].apply(lambda x: get_population(x))       
@@ -50,5 +56,5 @@ temp.index = temp["ind_ID"]
 print(temp)
 
 # Saving 
-temp.to_pickle("CHS_param_file.pkl")
+temp.to_pickle("pos_ct_param_file.pkl")
 # To read again > df = pd.read_pickle("param_file.pkl")
