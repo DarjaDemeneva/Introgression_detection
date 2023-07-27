@@ -11,7 +11,7 @@
 
 # hmmix create_ingroup -ind=individuals.json -vcf=$bcf_files -weights=strictmask.bed -out=obs -outgroup=outgroup.txt -ancestral=$ancestral
 
-mapfile -t individuals_array < <(grep -o '"ingroup": \[[^]]*\]' individuals_2.json | cut -d'[' -f2 | tr -d '"],')
+mapfile -t individuals_array < <(grep -o '"ingroup": \[[^]]*\]' individuals_5.json | cut -d'[' -f2 | tr -d '"],')
 
 for individuals in ${individuals_array[@]}; do
   hmmix train -obs=obs.$individuals.txt -weights=strictmask.bed -mutrates=mutrate.bed -out=trained.$individuals.phased.json -haploid
