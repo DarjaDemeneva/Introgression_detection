@@ -1,8 +1,8 @@
 # !/bin/bash 
 
-grep "Archaic" *.decoded.hap*.txt | awk '$6 > 0.9' | awk '{$3 = $3+1000; print}' > GBR.archaic.decoded.txt
+awk 'BEGIN{FS=OFS='\t'}; {$3 = $3+1000; print}' *.decoded.hap*.txt > GBR.decoded.txt # will that change my input files? dont want that to happen 
 
-awk '{ sub(/^[^:]*:/, "chr", $1); print $1, $2, $3 }' GBR.archaic.decoded.txt > GBR.archaic.bedGraph.txt
+awk '{ sub(/^[^:]*:/, "chr", $1); print $1, $2, $3 }' GBR.decoded.txt > GBR.archaic.bedGraph.txt
 
 awk '
     {

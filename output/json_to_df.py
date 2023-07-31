@@ -18,7 +18,7 @@ CHS_list = [i.strip() for i in individuals_CHS.split(",")]
 CHS_list = [i.strip('"') for i in CHS_list]
 
 # Using glob to extract all files matching the pattern
-json_files = glob.glob("pos_ct/trained.*.phased.json")
+json_files = glob.glob("pos_ct/param_files/trained.*.phased.json")
 
 # Empty list to store all dataframes generated from json files 
 dfs = []
@@ -33,7 +33,7 @@ for files in json_files:
     df = pd.read_json(files)
 
 # Adding each df to the list of dfs 
-    dfs.append(df)
+dfs.append(df)
 
 # Concatenating all dfs from the list into one df called temp    
 temp = pd.concat(dfs)
