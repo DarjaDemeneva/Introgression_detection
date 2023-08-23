@@ -56,5 +56,5 @@ temp.index = temp["ind_ID"]
 print(temp)
 
 # Saving 
-temp.to_pickle("param_file.pkl")
+# temp.to_pickle("param_file.pkl")
 # To read again > df = pd.read_pickle("param_file.pkl")
